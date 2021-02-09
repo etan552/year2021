@@ -78,6 +78,7 @@ body {
   font-family: "Big Shoulders Display", cursive;
   padding-left: 20px;
   font-weight: 400;
+  text-transform: uppercase;
 }
 
 .section-2 .content .text {
@@ -138,6 +139,9 @@ body {
   margin: 0 40px 0px;
   text-transform: uppercase;
   line-height: 1;
+  font-weight: 300;
+  letter-spacing: -3px;
+  word-spacing: 5px;
 }
 
 .section-3 .number.show {
@@ -211,35 +215,40 @@ body {
   z-index: 2;
 }
 
-.section-5 .container {
+.section-5 .container,
+.section-6 .container {
   position: relative;
   padding: 0px 30px;
 }
 
-.section-5 .top {
+.section-5 .top,
+.section-6 .top {
   position: sticky;
   top: 0;
   z-index: 3;
 }
 
-.section-5 .website-link {
+.section-5 .website-link,
+.section-6 .website-link {
   display: flex;
   justify-content: flex-end;
-  padding: 10px 0;
+  padding: 10px 30px;
   border-bottom: 1px solid white;
 }
 
-.section-5 .website-link a {
+.section-5 .website-link a,
+.section-6 .website-link a {
   font-size: 22px;
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   text-decoration: none;
   color: white;
-  padding-right: 30px;
 }
 
 .section-5 .img-outline,
-.section-5 .background-img span {
+.section-5 .background-img span,
+.section-6 .img-outline,
+.section-6 .background-img span {
   font-size: 220px;
   font-family: "Anton", sans-serif;
   letter-spacing: -3px;
@@ -248,17 +257,22 @@ body {
   text-transform: uppercase;
 }
 
-.section-5 .img-outline {
+.section-5 .img-outline,
+.section-6 .img-outline {
   color: rgba(255, 255, 255, 0);
-  -webkit-text-stroke: 1px rgb(255, 255, 255);
+  -webkit-text-stroke: 1.5px rgb(255, 255, 255);
 }
 
-.section-5 .background-img {
+.section-5 .background-img,
+.section-6 .background-img {
   position: absolute;
   top: 53px;
   left: 30px;
-  height: 100%; /* necessary for sticky and absolute to work together*/
+  height: calc(
+    100% - 53px - 70px
+  ); /* necessary for sticky and absolute to work together*/
   z-index: 1;
+  padding-bottom: 70px;
 }
 
 .section-5 .background-img span {
@@ -267,15 +281,24 @@ body {
   top: -8px;
 }
 
+.section-5 .bottom-background {
+  position: absolute;
+  top: 388px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh + 1100px - 388px + 500px);
+  background-color: rgb(34, 103, 206);
+  z-index: 2;
+}
+
 .section-5 .bottom {
   display: flex;
   flex-wrap: wrap;
   position: relative;
   width: 100%;
-  height: auto;
+  height: 1100px;
   padding: calc(100vh - 388px) 0 100px 0;
-  background-color: rgb(34, 103, 206);
-  z-index: 2;
+  z-index: 4;
 }
 
 .section-5 .bottom > div {
@@ -283,13 +306,15 @@ body {
   height: 270px;
 }
 
-.section-5 .desc-container {
+.section-5 .desc-container,
+.section-6 .desc-container {
   display: flex;
   justify-content: space-between;
   padding: 20px 50px;
 }
 
-.section-5 .website-type {
+.section-5 .website-type,
+.section-6 .website-type {
   width: 50%;
   font-size: 55px;
   font-family: "Roboto Slab", serif;
@@ -300,7 +325,8 @@ body {
   line-height: 0.92;
 }
 
-.section-5 .desc {
+.section-5 .desc,
+.section-6 .desc {
   width: 30%;
   color: white;
   font-family: "Roboto", sans-serif;
@@ -314,12 +340,47 @@ body {
   object-fit: cover;
   padding: 10px;
   margin: 0 calc(50% - 135px);
+  background-color: rgb(210, 219, 248);
 }
 
-.section-5 .bottom div:nth-child(odd) img {
+/* .section-5 .bottom div:nth-child(odd) img {
   background-color: rgb(217, 103, 252);
 }
 
 .section-5 .bottom div:nth-child(even) img {
   background-color: rgb(115, 243, 147);
+} */
+
+.section-6 {
+  position: relative;
+  background-color: rgb(32, 121, 47);
+  z-index: 3;
+}
+
+.section-6 .top {
+  height: 100vh;
+}
+
+.section-6 .img-outline,
+.section-6 .background-img span {
+  text-align: center;
+  font-size: 270px;
+}
+
+.section-6 .background-img {
+  left: 297px;
+  z-index: 1;
+}
+
+.section-6 .background-img span {
+  position: sticky;
+  color: white;
+  top: -21.5px;
+}
+
+.section-6 .bottom {
+  position: relative;
+  height: 600px;
+  background-color: rgb(32, 121, 47);
+  z-index: 2;
 }

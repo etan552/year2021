@@ -1,11 +1,13 @@
 const numbers = document.querySelectorAll(".number");
 const section4 = document.querySelector(".section-4");
+const rotaters = document.querySelectorAll(".rotating-img");
 
 const options = {
   rootMargin: "0px 0px -270px 0px",
 };
 
-const observer = new IntersectionObserver((entries, observer) => {
+// observer for numbers in section 3 that appear when entering viewport
+const observerNumbers = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) {
       return;
@@ -15,12 +17,13 @@ const observer = new IntersectionObserver((entries, observer) => {
 }, options);
 
 numbers.forEach((number) => {
-  observer.observe(number);
+  observerNumbers.observe(number);
 });
 
 const optionSection4 = {};
 let initialY = 450;
 
+// observer for moving background image in section 4 that appear when entering viewport
 const observerSection4 = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) {
@@ -35,3 +38,39 @@ const observerSection4 = new IntersectionObserver((entries, observer) => {
 }, optionSection4);
 
 observerSection4.observe(section4);
+
+// observer for rotating images
+const observerRotaters = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) {
+      return;
+    }
+    addRotateListener(entry);
+  });
+});
+
+rotaters.forEach((rotater) => {
+  observerRotaters.observe(rotater);
+});
+
+let called = [false, false, false, false];
+
+function addRotateListener(entry) {
+  const bodyPos = document.body.getBoundingClientRect().top;
+  const index = parseInt(entry.target.name);
+  const direction = index % 2 === 0 ? "left" : "right";
+  let angle = 0;
+
+  if (!called[index]) {
+    window.addEventListener("scroll", function () {
+      angle = bodyPos + window.pageYOffset;
+
+      $(`.section-5 img[alt=${entry.target.alt}]`).css(
+        "transform",
+        `rotate(${direction === "left" ? angle / -20 : angle / 20}deg)`
+      );
+    });
+
+    called[index] = true;
+  }
+}
