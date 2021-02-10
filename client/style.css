@@ -263,8 +263,7 @@ body {
   -webkit-text-stroke: 1.5px rgb(255, 255, 255);
 }
 
-.section-5 .background-img,
-.section-6 .background-img {
+.section-5 .background-img {
   position: absolute;
   top: 53px;
   left: 30px;
@@ -286,9 +285,15 @@ body {
   top: 388px;
   left: 0;
   width: 100%;
-  height: calc(100vh + 1100px - 388px + 500px);
+  height: calc(100vh + 1100px - 388px);
   background-color: rgb(34, 103, 206);
   z-index: 2;
+}
+
+@media (max-height: 388px) {
+  .section-5 .bottom-background {
+    height: 1200px;
+  }
 }
 
 .section-5 .bottom {
@@ -357,8 +362,8 @@ body {
   z-index: 3;
 }
 
-.section-6 .top {
-  height: 100vh;
+.section-6 .img-outline {
+  -webkit-text-stroke: 2px rgb(255, 255, 255);
 }
 
 .section-6 .img-outline,
@@ -370,17 +375,76 @@ body {
 .section-6 .background-img {
   left: 297px;
   z-index: 1;
+  position: absolute;
+  top: 53px;
+
+  height: calc(
+    100% - 53px - 70px
+  ); /* necessary for sticky and absolute to work together*/
+  z-index: 1;
+  padding-bottom: 70px;
 }
 
 .section-6 .background-img span {
   position: sticky;
   color: white;
-  top: -21.5px;
+  top: -21px;
+}
+
+.section-6 .bottom-background {
+  position: absolute;
+  top: 439px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh + 1100px - 439px);
+  background-color: rgb(32, 121, 47);
+  z-index: 2;
+}
+
+@media (max-height: 439px) {
+  .section-6 .bottom-background {
+    height: 1200px;
+  }
 }
 
 .section-6 .bottom {
   position: relative;
-  height: 600px;
-  background-color: rgb(32, 121, 47);
-  z-index: 2;
+  /* min-height: 500px; */
+  height: auto;
+  padding-top: calc(100vh - 438px);
+  z-index: 4;
+}
+
+.section-6 .roll-in {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  padding: 10px;
+  background-color: rgb(175, 234, 236);
+}
+
+.section-6 .bottom > div {
+  padding-bottom: 40px;
+  height: 270px;
+}
+
+.section-6 .bottom div:nth-child(odd) img {
+  opacity: 0;
+  transition: margin-left 1s linear, transform 1s linear, opacity 1s linear;
+}
+
+.section-6 .bottom div:nth-child(even) img {
+  opacity: 0;
+  float: right;
+  transition: margin-right 1s linear, transform 1s linear, opacity 1s linear;
+}
+
+.roll-in-left {
+  transform: rotate(360deg);
+  margin-left: 22%;
+}
+
+.roll-in-right {
+  transform: rotate(-360deg);
+  margin-right: 22%;
 }

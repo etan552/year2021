@@ -74,3 +74,24 @@ function addRotateListener(entry) {
     called[index] = true;
   }
 }
+
+// observer for rolling img - section 6
+const rollingImgs = document.querySelectorAll(".roll-in");
+console.log(rollingImgs);
+const rollingImgsOptions = {};
+
+const observerRollingImgs = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const name = entry.target.attributes.name.value;
+      const isOdd = name % 2 === 0 ? false : true;
+
+      $(`.section-6 img[name='${name}']`).css("opacity", "1");
+      entry.target.classList.add(isOdd ? "roll-in-left" : "roll-in-right");
+    }
+  });
+}, rollingImgsOptions);
+
+rollingImgs.forEach((img) => {
+  observerRollingImgs.observe(img);
+});
