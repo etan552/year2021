@@ -65,10 +65,21 @@ function addRotateListener(entry) {
     window.addEventListener("scroll", function () {
       angle = bodyPos + window.pageYOffset;
 
-      $(`.section-5 img[alt=${entry.target.alt}]`).css(
-        "transform",
-        `rotate(${direction === "left" ? angle / -20 : angle / 20}deg)`
-      );
+      if (direction === "left") {
+        $(`.section-5 img[alt=${entry.target.alt}]`).css({
+          transform: `rotate(${angle / -20}deg)`,
+          margin: `0px calc(50% - 135px - ${angle / 15}px)`,
+        });
+      } else {
+        $(`.section-5 img[alt=${entry.target.alt}]`).css({
+          transform: `rotate(${angle / 20}deg)`,
+          margin: `0px calc(50% - 135px + ${angle / 15}px)`,
+        });
+      }
+      // $(`.section-5 img[alt=${entry.target.alt}]`).css(
+      //   "transform",
+      //   `rotate(${direction === "left" ? angle / -20 : angle / 20}deg)`
+      // );
     });
 
     called[index] = true;
@@ -94,4 +105,22 @@ const observerRollingImgs = new IntersectionObserver((entries) => {
 
 rollingImgs.forEach((img) => {
   observerRollingImgs.observe(img);
+});
+
+// observer for bouncing images - section 1
+const boucingImgs = document.querySelectorAll(".bouncing-img");
+const boucingImgsOptions = {};
+
+const observerBouncingImgs = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const name = entry.target.attributes.name.value;
+
+      entry.target.classList.add("bounce", `num-${name}`);
+    }
+  });
+}, boucingImgsOptions);
+
+boucingImgs.forEach((img) => {
+  observerBouncingImgs.observe(img);
 });
