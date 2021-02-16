@@ -99,7 +99,7 @@ $("#section-7-exit-btn").click(() => {
 });
 
 // section 7 left and right button
-$(".section-7 .btn").click((e) => {
+$("#section-7-left-btn, #section-7-right-btn").click((e) => {
   if (clicked) return;
   clicked = true;
 
@@ -121,8 +121,6 @@ $(".section-7 .btn").click((e) => {
     } else {
       cardSelected = parseInt(cardSelected) - 1;
     }
-  } else {
-    return;
   }
 
   gsap.to(`#card-${cardSelected}`, {
