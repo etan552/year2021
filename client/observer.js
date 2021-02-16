@@ -1,3 +1,5 @@
+import { timeline } from "./bouncingImg.js";
+
 const numbers = document.querySelectorAll(".number");
 const section4 = document.querySelector(".section-4");
 const rotaters = document.querySelectorAll(".rotating-img");
@@ -20,10 +22,10 @@ numbers.forEach((number) => {
   observerNumbers.observe(number);
 });
 
+// observer for moving background image in section 4 that appear when entering viewport
 const optionSection4 = {};
 let initialY = 450;
 
-// observer for moving background image in section 4 that appear when entering viewport
 const observerSection4 = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) {
@@ -76,10 +78,6 @@ function addRotateListener(entry) {
           margin: `0px calc(50% - 135px + ${angle / 15}px)`,
         });
       }
-      // $(`.section-5 img[alt=${entry.target.alt}]`).css(
-      //   "transform",
-      //   `rotate(${direction === "left" ? angle / -20 : angle / 20}deg)`
-      // );
     });
 
     called[index] = true;
@@ -88,7 +86,6 @@ function addRotateListener(entry) {
 
 // observer for rolling img - section 6
 const rollingImgs = document.querySelectorAll(".roll-in");
-console.log(rollingImgs);
 const rollingImgsOptions = {};
 
 const observerRollingImgs = new IntersectionObserver((entries) => {
@@ -108,15 +105,15 @@ rollingImgs.forEach((img) => {
 });
 
 // observer for bouncing images - section 1
-const boucingImgs = document.querySelectorAll(".bouncing-img");
-const boucingImgsOptions = {};
+const boucingImgs = document.querySelectorAll(".section-1");
+const boucingImgsOptions = { threshold: 0.9 };
 
 const observerBouncingImgs = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      const name = entry.target.attributes.name.value;
-
-      entry.target.classList.add("bounce", `num-${name}`);
+      // const name = entry.target.attributes.name.value;
+      // entry.target.classList.add("bounce", `num-${name}`);
+      timeline.play();
     }
   });
 }, boucingImgsOptions);
