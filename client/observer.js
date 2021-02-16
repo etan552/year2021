@@ -8,6 +8,31 @@ const options = {
   rootMargin: "0px 0px -270px 0px",
 };
 
+// section - 2 (text)
+const textSec2 = document.querySelectorAll(
+  ".section-2 .content .text p span, .section-2 .header"
+);
+const optionsSec2 = { threshold: 0.5 };
+
+const observerSec2 = new IntersectionObserver((entries, observerSec2) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const className = entry.target.className;
+      if (className.substring(0, 4) === "para") {
+        const para = $(`.section-2 .content .${className}`);
+        gsap.to(para, { duration: 1, opacity: "1", y: "0px" });
+      } else if (className === "header") {
+        const header = $(`.section-2 .content .${className}`);
+        gsap.to(header, { duration: 1, x: "0", opacity: "1", ease: "power2" });
+      }
+    }
+  });
+}, optionsSec2);
+
+textSec2.forEach((text) => {
+  observerSec2.observe(text);
+});
+
 // observer for numbers in section 3 that appear when entering viewport
 const observerNumbers = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
@@ -86,7 +111,7 @@ function addRotateListener(entry) {
 
 // observer for rolling img - section 6
 const rollingImgs = document.querySelectorAll(".roll-in");
-const rollingImgsOptions = {};
+const rollingImgsOptions = { threshold: 1 };
 
 const observerRollingImgs = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {

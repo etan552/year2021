@@ -142,6 +142,14 @@ $(".section-7 .btn").click((e) => {
   gsap.to(`#card-${oldCard}`, {
     rotate: `${angles[oldCard]}`,
   });
+  gsap.killTweensOf(
+    `#card-${oldCard} .para-1, #card-${oldCard} .para-2, #card-${oldCard} .title`
+  );
+  $(".section-7 .para-1, .section-7 .para-2 ,.section-7 .title").removeAttr(
+    "style"
+  );
+  cardAnimation();
+
   setTimeout(() => {
     clicked = false;
   }, 1000);
@@ -156,7 +164,11 @@ function cardAnimation() {
   let timeline = gsap.timeline({ defaults: { duration: 1, delay: 1 } });
 
   timeline
-    .fromTo(cardTitle, { y: "0px" }, { y: "-175px", ease: "bounce" })
+    .fromTo(
+      cardTitle,
+      { y: "0px" },
+      { y: "-175px", ease: "bounce", height: "104px" }
+    )
     .fromTo(
       para1,
       { color: "transparent", textShadow: "0 0 10px rgb(0, 0, 0)" },
