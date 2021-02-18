@@ -38,8 +38,31 @@
     font-size: 20vw;
     padding: 0;
   }
+
   .section-2 .container .content .text {
     width: 80vw;
     padding: 0;
+  }
+
+  .section-3 .container .group {
+    width: calc(100vw - 100px);
+    padding: 0 8vw;
+    margin: 0 10px;
+  }
+
+  .section-3 .container .group h1 {
+    margin: 0;
+  }
+
+  .section-3 .container .group:last-child {
+    padding-bottom: 0;
+  }
+
+  .section-3 .container .number {
+    font-size: 100px;
+  }
+
+  .section-3 .container .text {
+    font-size: 28px;
   }
 }
