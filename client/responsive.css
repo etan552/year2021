@@ -1,0 +1,45 @@
+@media (max-width: 600px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    overflow-y: auto;
+  }
+
+  body .container {
+    position: relative;
+    width: 100vw;
+    padding: 20px 0;
+  }
+
+  .section-1 .bouncing-img {
+    font-size: 30vw;
+  }
+
+  .section-2 .container > span,
+  .section-2 .background-img span {
+    font-size: 115vw;
+  }
+
+  .section-2 .container > .background-img {
+    width: 100vw;
+    right: 0px;
+  }
+
+  .section-2 .container .content {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .section-2 .container .content .header {
+    transform: translateY(0);
+    width: 76vw;
+    font-size: 20vw;
+    padding: 0;
+  }
+  .section-2 .container .content .text {
+    width: 80vw;
+    padding: 0;
+  }
+}

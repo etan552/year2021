@@ -1,3 +1,5 @@
+@import "responsive.css";
+
 body {
   position: relative;
   overflow-x: hidden;
@@ -19,7 +21,7 @@ body {
   background-color: rgb(212, 212, 212);
 }
 
-.section-1 .bouncing-img {
+.section-1 span {
   font-size: 400px;
   font-family: "Anton", sans-serif;
   line-height: 0.92;
