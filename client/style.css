@@ -130,7 +130,6 @@ body {
   left: 0;
   width: 100%;
   height: calc(125vh - 90px);
-  /* background: linear-gradient(to top, rgb(0, 0, 0), rgb(39, 39, 39)); */
   z-index: 3;
 }
 
@@ -188,7 +187,6 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  /* height: 100%; */
   display: flex;
   align-items: center;
   transition: left 0.3s ease-out;
@@ -220,6 +218,8 @@ body {
   margin: 0;
   font-family: "Big Shoulders Display", cursive;
   padding-left: 20px;
+  text-transform: uppercase;
+  font-weight: 400;
 }
 
 .section-4 .text {
